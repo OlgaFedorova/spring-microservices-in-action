@@ -109,7 +109,6 @@ hs_err_pid*
 
 /.idea/compiler.xml
 /.idea/misc.xml
-/pom.xml
 *.iml
 /.idea/vcs.xml
 /.idea/
