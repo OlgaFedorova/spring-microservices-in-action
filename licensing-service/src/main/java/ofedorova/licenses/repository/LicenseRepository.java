@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface LicenseRepository extends CrudRepository<License, UUID> {
 
-  List<License> findByOrganizationId(String organizationId);
+  List<License> findByOrganizationId(UUID organizationId);
 
-  License findByOrganizationIdAndLicenseId(String organizationId,String licenseId);
+  License findByOrganizationIdAndLicenseId(UUID organizationId, UUID licenseId);
 }

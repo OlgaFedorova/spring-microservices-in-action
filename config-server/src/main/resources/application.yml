@@ -7,4 +7,5 @@ spring:
       config:
         server:
           native:
-            search-locations: file:///C://Projects/samples/spring-microservices-in-action/config-server/src/main/resources/config/{application}
+            search-locations: classpath:/config/{application}
+          encrypt.enabled: false

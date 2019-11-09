@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/v1/organizations/{organizationId}/licenses")
@@ -25,13 +26,13 @@ public class LicenseServiceController {
   private ServiceConfig serviceConfig;
 
   @RequestMapping(value="/",method = RequestMethod.GET)
-  public List<License> getLicenses(@PathVariable("organizationId") String organizationId) {
+  public List<License> getLicenses(@PathVariable("organizationId") UUID organizationId) {
     return licenseService.getLicensesByOrg(organizationId);
   }
 
   @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
-  public License getLicenses( @PathVariable("organizationId") String organizationId,
-                              @PathVariable("licenseId") String licenseId) {
+  public License getLicenses( @PathVariable("organizationId") UUID organizationId,
+                              @PathVariable("licenseId") UUID licenseId) {
     return licenseService.getLicense(organizationId,licenseId);
   }
 
@@ -47,7 +48,7 @@ public class LicenseServiceController {
 
   @RequestMapping(value="{licenseId}",method = RequestMethod.DELETE)
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public String deleteLicenses( @PathVariable("licenseId") String licenseId) {
+  public String deleteLicenses( @PathVariable("licenseId") UUID licenseId) {
     return String.format("This is the Delete");
   }
 }

@@ -31,12 +31,6 @@
               <outputDirectory>${basedir}/target/dockerfile</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}</directory>
-                  <includes>
-                    <include>pom.xml</include>
-                  </includes>
-                </resource>
-                <resource>
                   <directory>postgres</directory>
                   <filtering>true</filtering>
                 </resource>

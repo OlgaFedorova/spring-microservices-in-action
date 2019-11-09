@@ -1,7 +1,9 @@
 package ofedorova.licenses.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,15 +13,17 @@ import java.util.UUID;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "licenses")
+@Table(schema = "license", name = "licenses")
 public class License {
   @Id
   @Column(name = "license_id", nullable = false)
   private UUID licenseId;
 
   @Column(name = "organization_id", nullable = false)
-  private String organizationId;
+  private UUID organizationId;
 
   @Column(name = "product_name", nullable = false)
   private String productName;

@@ -16,16 +16,16 @@ public class LicenseService {
   private LicenseRepository licenseRepository;
 
   @Autowired
-  ServiceConfig config;
+  private ServiceConfig config;
 
-  public License getLicense(String organizationId, String licenseId) {
+  public License getLicense(UUID organizationId, UUID licenseId) {
     License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
     license.setComment(config.getExampleProperty());
     return license;
   }
 
-  public List<License> getLicensesByOrg(String organizationId){
-    return licenseRepository.findByOrganizationId( organizationId );
+  public List<License> getLicensesByOrg(UUID organizationId){
+    return licenseRepository.findByOrganizationId(organizationId );
   }
 
   public void saveLicense(License license){

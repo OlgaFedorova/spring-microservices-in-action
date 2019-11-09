@@ -1,1 +1,2 @@
 example.property: "I AM IN THE DEV"
+spring.datasource.url: "jdbc:postgresql://localhost:5433/spring_microservices"

@@ -12,13 +12,13 @@ BEGIN
         RAISE NOTICE 'Start % ...', lScriptName;
 
         INSERT INTO license.licenses (license_id,  organization_id, license_type, product_name, license_max, license_allocated)
-        VALUES ('f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a', 'e254f8c-c442-4ebe-a82a-e2fc1d1ff78a', 'user','customer-crm-co', 100,5);
+        VALUES ('8acc73fe-3abe-48f4-982d-830790a2e62f', '0874d3a0-4a32-4a34-8ecf-3c4482e6be13', 'user','customer-crm-co', 100,5);
         INSERT INTO license.licenses (license_id,  organization_id, license_type, product_name, license_max, license_allocated)
-        VALUES ('t9876f8c-c338-4abc-zf6a-ttt1', 'e254f8c-c442-4ebe-a82a-e2fc1d1ff78a', 'user','suitability-plus', 200,189);
+        VALUES ('edb0857b-eaf2-4a99-bf95-e651f53885a1', '0874d3a0-4a32-4a34-8ecf-3c4482e6be13', 'user','suitability-plus', 200,189);
         INSERT INTO license.licenses (license_id,  organization_id, license_type, product_name, license_max, license_allocated)
-        VALUES ('38777179-7094-4200-9d61-edb101c6ea84', '442adb6e-fa58-47f3-9ca2-ed1fecdfe86c', 'user','HR-PowerSuite', 100,4);
+        VALUES ('726f9d97-1d9d-4082-a539-2068d95a004a', 'a8883ce2-1d08-47b9-803f-3b787f49189b', 'user','HR-PowerSuite', 100,4);
         INSERT INTO license.licenses (license_id,  organization_id, license_type, product_name, license_max, license_allocated)
-        VALUES ('08dbe05-606e-4dad-9d33-90ef10e334f9', '442adb6e-fa58-47f3-9ca2-ed1fecdfe86c', 'core-prod','WildCat Application Gateway', 16,16);
+        VALUES ('4a2cf98c-0c9f-45b7-a3b2-785b08d2c049', 'a8883ce2-1d08-47b9-803f-3b787f49189b', 'core-prod','WildCat Application Gateway', 16,16);
 
         RAISE NOTICE 'Process % is finished', lScriptName;
 
