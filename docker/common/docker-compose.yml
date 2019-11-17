@@ -42,6 +42,19 @@ services:
       retries: 5
     networks:
       - microservices
+  zuulserver:
+    image: olgafedorova/zuulserver
+    ports:
+      - "5555:5555"
+    restart: always
+    environment:
+      PROFILE: "default"
+      CONFIG_URI: "http://configserver:8888"
+    depends_on:
+      - eurekaserver
+      - configserver
+    networks:
+      - microservices
   licensingservice:
     image: olgafedorova/licenses
     ports:

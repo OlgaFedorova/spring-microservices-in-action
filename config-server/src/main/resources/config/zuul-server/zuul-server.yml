@@ -1,0 +1,24 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka/
+
+zuul:
+  ignored-services: '*'
+  prefix:  /api
+  routes:
+    organization-service: /organization/**
+    licensing-service: /licensing/**
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2500
+hystrix.command.licensing-service.execution.isolation.thread.timeoutInMilliseconds: 7000
+licensing-service.ribbon.ReadTimeout: 7000
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    ofedorova: DEBUG

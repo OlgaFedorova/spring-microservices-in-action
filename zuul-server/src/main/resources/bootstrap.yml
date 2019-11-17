@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: zuul-server
+  profiles:
+    active:
+      ${PROFILE}
+  cloud:
+    config:
+      uri: ${CONFIG_URI}

@@ -3,6 +3,9 @@ package ofedorova.licenses.controllers;
 import ofedorova.licenses.config.ServiceConfig;
 import ofedorova.licenses.model.License;
 import ofedorova.licenses.services.LicenseService;
+import ofedorova.licenses.utill.UserContextHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +21,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "/v1/organizations/{organizationId}/licenses")
 public class LicenseServiceController {
+  private static final Logger logger = LoggerFactory.getLogger(LicenseServiceController.class);
 
   @Autowired
   private LicenseService licenseService;
@@ -25,8 +29,9 @@ public class LicenseServiceController {
   @Autowired
   private ServiceConfig serviceConfig;
 
-  @RequestMapping(value="/",method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET)
   public List<License> getLicenses(@PathVariable("organizationId") UUID organizationId) {
+    logger.info("LicenseServiceController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
     return licenseService.getLicensesByOrg(organizationId);
   }
 
@@ -41,7 +46,7 @@ public class LicenseServiceController {
     return String.format("This is the put");
   }
 
-  @RequestMapping(value="/",method = RequestMethod.POST)
+  @RequestMapping(method = RequestMethod.POST)
   public void saveLicenses(@RequestBody License license) {
     licenseService.saveLicense(license);
   }
