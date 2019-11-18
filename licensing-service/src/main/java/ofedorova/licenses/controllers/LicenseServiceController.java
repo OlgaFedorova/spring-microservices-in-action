@@ -38,6 +38,7 @@ public class LicenseServiceController {
   @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
   public License getLicenses( @PathVariable("organizationId") UUID organizationId,
                               @PathVariable("licenseId") UUID licenseId) {
+    logger.info("LicenseServiceController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
     return licenseService.getLicense(organizationId,licenseId);
   }
 

@@ -44,12 +44,16 @@ services:
       - microservices
   zuulserver:
     image: olgafedorova/zuulserver
+    hostname: zuulserver
+    container_name: zuulserver
     ports:
       - "5555:5555"
     restart: always
     environment:
       PROFILE: "default"
       CONFIG_URI: "http://configserver:8888"
+      CONFIGSERVER_PORT: 8888
+      EUREKASERVER_PORT: 8761
     depends_on:
       - eurekaserver
       - configserver

@@ -2,6 +2,9 @@ package ofedorova.organizations.controllers;
 
 import ofedorova.organizations.model.Organization;
 import ofedorova.organizations.services.OrganizationService;
+import ofedorova.organizations.utill.UserContextHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +20,14 @@ import java.util.UUID;
 @RequestMapping(value="v1/organizations")
 public class OrganizationController {
 
+  private static final Logger logger = LoggerFactory.getLogger(OrganizationController.class);
+
   @Autowired
   private OrganizationService organizationService;
 
   @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
   public Organization getOrganization(@PathVariable("organizationId") UUID organizationId) {
+    logger.info("OrganizationController Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
     return organizationService.findById(organizationId).orElse(null);
   }
 

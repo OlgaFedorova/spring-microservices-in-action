@@ -2,7 +2,7 @@ package ofedorova.licenses.services;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import ofedorova.licenses.clients.OrganizationFeignClient;
+import ofedorova.licenses.clients.OrganizationRestTemplateClient;
 import ofedorova.licenses.config.ServiceConfig;
 import ofedorova.licenses.model.License;
 import ofedorova.licenses.model.Organization;
@@ -28,7 +28,7 @@ public class LicenseService {
   private ServiceConfig config;
 
   @Autowired
-  private OrganizationFeignClient organizationFeignClient;
+  private OrganizationRestTemplateClient organizationRestClient;
 
   public License getLicense(UUID organizationId, UUID licenseId) {
     License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
@@ -78,7 +78,8 @@ public class LicenseService {
 
   @HystrixCommand
   private Organization retrieveOrgInfo(UUID organizationId) {
-    return organizationFeignClient.getOrganization(organizationId);
+    logger.info("LicenseService.retrieveOrgInfo Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
+    return organizationRestClient.getOrganization(organizationId);
   }
 
   private List<License> buildFallbackLicenseList(UUID organizationId) {
