@@ -12,3 +12,4 @@ RUN apt-get update \
 
 COPY ./flyway/flyway.conf flyway/conf
 COPY ./migration flyway/migration
+COPY @project.build.finalName@.jar flyway/jars
