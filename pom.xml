@@ -28,7 +28,7 @@
     <docker.image.tag>latest</docker.image.tag>
 
     <spring-cloud-version>Hoxton.RC2</spring-cloud-version>
-    <jdbc.postgresql.version>42.2.5</jdbc.postgresql.version>
+    <jdbc.postgresql.version>42.2.25</jdbc.postgresql.version>
     <docker-maven-plugin>0.31.0</docker-maven-plugin>
   </properties>
 
